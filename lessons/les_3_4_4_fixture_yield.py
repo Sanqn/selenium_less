@@ -11,7 +11,7 @@ def browser(request):
     browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=webdriver.ChromeOptions())
     def close_browser():
         browser.quit()
-    request.addfinalizer(close_browser)#request.addfinalizer
+    request.addfinalizer(close_browser)
     print('Start request')
     return browser
 
