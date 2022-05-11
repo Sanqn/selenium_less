@@ -6,12 +6,14 @@ from selenium import webdriver
 link = 'http://selenium1py.pythonanywhere.com/'
 
 @pytest.fixture
-def browser():
+def browser(request):
     print("start browser for test suite..")
     browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=webdriver.ChromeOptions())
-    yield browser
-    print("quit browser..")
-    browser.quit()
+    def close_browser():
+        browser.quit()
+    request.addfinalizer(close_browser)
+    print('Start request')
+    return browser
 
 class TestPage:
     def test_guest_should_see_login_link(self, browser):
