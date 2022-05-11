@@ -9,9 +9,9 @@ link = 'http://selenium1py.pythonanywhere.com/'
 def browser(request):
     print("start browser for test suite..")
     browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=webdriver.ChromeOptions())
-    def close_browser():#new foo
+    def close_browser():
         browser.quit()
-    request.addfinalizer(close_browser)
+    request.addfinalizer(close_browser)#request.addfinalizer
     print('Start request')
     return browser
 
