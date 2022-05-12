@@ -37,3 +37,4 @@ class TestPageLink:
         browser.get(link)
         browser.find_element_by_css_selector("button.favorite")
 
+#pytest -rx -v  les_3_5_5_fixture_xfile.py (-rv to see reason="fixing this bug right now" in xfile)
