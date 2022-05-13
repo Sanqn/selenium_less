@@ -15,15 +15,15 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("browser_name")
     browser = None
-    user_language = request.config.getoption("user_language")
+    language = request.config.getoption("user_language")
     if browser_name == "chrome":
         options = Options()
-        options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
         print("\nstart chrome browser for test..")
         browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=options)
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
+        fp.set_preference("intl.accept_languages", language)
         print("\nstart firefox browser for test..")
         browser = webdriver.Firefox(service=Service('C:\geckodriver\geckodriver.exe'), firefox_profile=fp)
     else:
