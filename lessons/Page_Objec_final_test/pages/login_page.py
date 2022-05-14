@@ -17,4 +17,5 @@ class LoginPage(BasePage):
         pass
 
     def should_be_register_form(self):
-        pass
+            register_form = self.browser.find_element(*LoginPageLocators.REGISTER_FORM)
+            assert register_form, 'Register form not found'
