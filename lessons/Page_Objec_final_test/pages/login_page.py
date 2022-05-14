@@ -14,8 +14,9 @@ class LoginPage(BasePage):
         assert new_window, 'Login url not found'
 
     def should_be_login_form(self):
-        pass
+        login_form = self.browser.find_element(*LoginPageLocators.LOGIN_FORM)
+        assert login_form, 'Login form not found'
 
     def should_be_register_form(self):
-            register_form = self.browser.find_element(*LoginPageLocators.REGISTER_FORM)
-            assert register_form, 'Register form not found'
+        register_form = self.browser.find_element(*LoginPageLocators.REGISTER_FORM)
+        assert register_form, 'Register form not found'
