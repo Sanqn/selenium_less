@@ -8,26 +8,27 @@ def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default='chrome',
                      help="Choose browser: chrome or firefox")
 
-    parser.addoption('--user_language', action='store', default='en',
+    parser.addoption('--language', action='store', default='en',
                      help="Choose language: ru, en ...")
 
 @pytest.fixture(scope="function")
 def browser(request):
     browser_name = request.config.getoption("browser_name")
     browser = None
-    user_language = request.config.getoption("user_language")
+    language = request.config.getoption("language")
     if browser_name == "chrome":
         options = Options()
-        options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=options)
+        browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
         fp = webdriver.FirefoxProfile()
-        fp.set_preference("intl.accept_languages", user_language)
+        fp.set_preference("intl.accept_languages", language)
         print("\nstart firefox browser for test..")
-        browser = webdriver.Firefox(service=Service('C:\geckodriver\geckodriver.exe'), firefox_profile=fp)
+        browser = webdriver.Firefox(firefox_profile=fp)
     else:
-        raise pytest.UsageError("--browser_name should be chrome or firefox")
+        raise pytest.UsageError("--browser_name should be chrome or firefox",
+                                "--languages should be ru, es ...",)
     # yield browser
     # print("\nquit browser..")
     # browser.quit()
