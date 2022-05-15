@@ -44,6 +44,7 @@
 # def test_eval(test_input, expected):
 #     assert eval(test_input) == expected
 import math
+import time
 
 import pytest
 from selenium.common.exceptions import NoAlertPresentException
@@ -51,26 +52,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
-link = 'http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear'
+link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
 
 browser = webdriver.Chrome(service=Service('C:\chromedriver\chromedriver.exe'), options=webdriver.ChromeOptions())
 browser.get(link)
-login_url = browser.find_element(By.CSS_SELECTOR, '.price_color').text
-print(login_url)
-alert = browser.switch_to.alert
-x = alert.text.split(" ")[2]
-answer = str(math.log(abs((12 * math.sin(float(x))))))
-alert.send_keys(answer)
-alert.accept()
-try:
-    alert = browser.switch_to.alert
-    alert_text = alert.text
-    print(f"Your code: {alert_text}")
-    alert.accept()
-except NoAlertPresentException:
-    print("No second alert presented")
-print(x)
-
-
-
-
+browser.find_element(By.CSS_SELECTOR, '#add_to_basket_form>.btn').click()
+time.sleep(5)
+browser.find_element(By.CSS_SELECTOR, '#messages')
+browser.quit()
