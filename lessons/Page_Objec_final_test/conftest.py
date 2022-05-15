@@ -29,11 +29,6 @@ def browser(request):
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox",
                                 "--languages should be ru, es ...",)
-    # yield browser
-    # print("\nquit browser..")
-    # browser.quit()
-    def close_window():
-        browser.quit()
-    print('finish request')
-    request.addfinalizer(close_window)
-    return browser
+    yield browser
+    print("\nquit browser..")
+    browser.quit()

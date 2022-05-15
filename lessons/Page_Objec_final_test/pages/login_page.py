@@ -9,9 +9,8 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        self.browser.find_element(*LoginPageLocators.LOGIN_URL).click()
-        new_window = self.browser.current_url
-        assert new_window, 'Login url not found'
+        login_url = self.browser.find_element(*LoginPageLocators.LOGIN_URL)
+        assert login_url, 'Login url not found'
 
     def should_be_login_form(self):
         login_form = self.browser.find_element(*LoginPageLocators.LOGIN_FORM)
