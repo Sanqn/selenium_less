@@ -18,3 +18,8 @@ class BasketButtonLocators:
     CHECK_PRICE_ADDED_BOOK = (By.CSS_SELECTOR, '.alertinner>p>strong')
     CHECK_PRICE_ORDERED_BOOK = (By.CSS_SELECTOR, '.product_main>.price_color')
     CHECK_MESSAGE = (By.CSS_SELECTOR, '.alert-success')
+
+
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
