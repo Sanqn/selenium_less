@@ -16,3 +16,5 @@ class BacketButtonLocators:
     CHECK_TEXT_ORDERED_BOOK = (By.CSS_SELECTOR, '.product_main>h1')
     CHECK_PRICE_ADDED_BOOK = (By.CSS_SELECTOR, '.alertinner>p>strong')
     CHECK_PRICE_ORDERED_BOOK = (By.CSS_SELECTOR, '.product_main>.price_color')
+
+

@@ -13,7 +13,7 @@ class AddToBasket(BasePage):
         print('check_text_added_book')
         text_added_book = self.browser.find_element(*BacketButtonLocators.CHECK_TEXT_ADDED_BOOK).text
         text_ordered_book = self.browser.find_element(*BacketButtonLocators.CHECK_TEXT_ORDERED_BOOK).text
-        assert text_added_book == text_ordered_book, 'The Book orderd right'
+        assert text_added_book == text_ordered_book, 'The Book orderd not right'
 
     def check_price_added_book(self):
         print('check_price_added_book')
