@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import BasketButtonLocators
+from .basket_page import BasketPage
 
 
 class AddToBasket(BasePage):
@@ -28,3 +29,7 @@ class AddToBasket(BasePage):
         text_added_book_price = self.browser.find_element(*BasketButtonLocators.CHECK_PRICE_ADDED_BOOK).text
         text_ordered_book_price = self.browser.find_element(*BasketButtonLocators.CHECK_PRICE_ORDERED_BOOK).text
         assert text_added_book_price == text_ordered_book_price, 'The Book price right'
+
+
+
+

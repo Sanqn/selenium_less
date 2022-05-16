@@ -3,7 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
-from .locators import BasePageLocators
+
+from .locators import BasePageLocators, BasketButtonLocators
 
 
 class BasePage:
@@ -13,7 +14,7 @@ class BasePage:
         self.browser.implicitly_wait(timeout)
 
     def go_to_login_page(self):
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()
 
     def should_be_login_link(self):
@@ -58,3 +59,12 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def click_basket_button(self):
+        print('Start')
+        button = self.browser.find_element(*BasketButtonLocators.CLICK_BUTTON_BASKET)
+        button.click()
+
+    def check_basket_empty(self):
+        print('Start')
+        assert self.is_element_present(*BasketButtonLocators.BASKET_EMPTY), 'The basket not empty'
