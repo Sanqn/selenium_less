@@ -10,4 +10,4 @@ elements = browser.find_elements(By.XPATH, "//input[@type='text']")
 for element in elements:
     element.send_keys('root')
 
-browser.find_element(By.XPATH, "//button[@type='submit']").click()
+browser.find_element(By.XPATH, "//button[@type='submit']").send_keys()

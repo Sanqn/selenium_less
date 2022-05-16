@@ -26,7 +26,7 @@ class BasePage:
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
-        except NoSuchElementException:  # (имя исключения)
+        except NoSuchElementException:
             return False
         return True
 
@@ -68,3 +68,7 @@ class BasePage:
     def check_basket_empty(self):
         print('Start')
         assert self.is_element_present(*BasketButtonLocators.BASKET_EMPTY), 'The basket not empty'
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
