@@ -1,0 +1,8 @@
+pip==22.1
+wheel~=0.37.1
+setuptools==62.2.0
+selenium~=4.1.5
+pytest~=7.1.2
+pytest-rerunfailures==10.2
+
+
